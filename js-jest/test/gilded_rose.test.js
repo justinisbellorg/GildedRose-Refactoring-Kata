@@ -22,3 +22,21 @@ describe("Gilded Rose", function() {
 // - "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
 // Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
 // Quality drops to 0 after the concert
+
+/* Scenario Walkthroughs to help thinking
+***************************
+Here we list out what seem like common scenarios. This plus the logic comments we put in should help us map out how this thing actually works
+1. We don't know if how it works actually matches the rules
+2. We presume anywhere it doesn't work matching the specs is a bug but this is an assumption
+3. Lets assuming this is running live in how we approach making changes and limit the number of breaking changes
+***************************
+
+One big Note is that it looks like we don't have any items changing the value of other items which is great, this basically leaves us with just a few scenarios for each item:
+1. The item is not passed its sell by date
+2. The item is passed its sell by date.
+3. The items value has hit zero
+4. The items value has hit 50
+
+We can probably just makes 4 sets of tests to handle these situations. 
+
+*/
