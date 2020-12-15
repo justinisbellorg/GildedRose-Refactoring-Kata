@@ -18,6 +18,11 @@ describe("Gilded Rose", function() {
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toBe(50);
     });
+    it("should drop sellin by 1", function(){
+      const gildedRose = new Shop([new Item("Aged Brie", 4, 40)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toBe(3);
+    })
   })
 
   describe("Sulfuras", function(){
@@ -31,6 +36,11 @@ describe("Gilded Rose", function() {
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toBe(55);
     });
+    it("should not drop sellin", function(){
+      const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", 4, 40)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toBe(4);
+    })
   })
 
   describe("Backstage Pass", function(){
@@ -59,6 +69,11 @@ describe("Gilded Rose", function() {
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toBe(50);
     })
+    it("should drop sellin by 1", function(){
+      const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 4, 40)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toBe(3);
+    })
   })
 
   describe("Standard Items",function(){
@@ -73,9 +88,14 @@ describe("Gilded Rose", function() {
       expect(items[0].quality).toBe(0);
     })
     it("Should lose value twice as fast once past sell by", function(){
-      const gildedRose = new Shop([new Item("rando", 0, 10)]);
+      const gildedRose = new Shop([new Item("Rando", 0, 10)]);
       const items = gildedRose.updateQuality();
       expect(items[0].quality).toBe(8);
+    })
+    it("should drop sellin by 1", function(){
+      const gildedRose = new Shop([new Item("Rando", 4, 40)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].sellIn).toBe(3);
     })
   })
 });
